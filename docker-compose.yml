@@ -6,20 +6,18 @@ services:
       context: .
       dockerfile: AppDockerfile
     image: "app:0.1"
-    # network_mode: "host" 
     ports:
       - 8000:8000
     restart: "always"
-    # command: python3.8 manage.py runserver 0.0.0.0:8000
-    # entrypoint: ["/.farmsetu_project/start_server.sh"]
     volumes:
-      - .:/.farmsetu_project
+        - .:/.project_farmsetu/
     environment:
       - PGDATA=/var/lib/postgresql/
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - DB_NAME=db_farmsetu
       - DB_HOST=db
+    entrypoint: ["/.project_farmsetu/start_server.sh"]
     depends_on:
       - db
   db:

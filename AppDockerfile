@@ -1,4 +1,4 @@
 FROM base:0.1
-ADD . /.project_farmsetu
+COPY . /.project_farmsetu
 WORKDIR /.project_farmsetu
-ENTRYPOINT [ "/.project_farmsetu/start_server.sh" ]
+RUN python3.8 -m pip install -r /.project_farmsetu/requirements.txt
