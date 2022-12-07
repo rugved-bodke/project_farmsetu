@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: AppDockerfile
+    image: "app:0.1"
+    # network_mode: "host" 
+    ports:
+      - 8000:8000
+    restart: "always"
+    # command: python3.8 manage.py runserver 0.0.0.0:8000
+    # entrypoint: ["/.farmsetu_project/start_server.sh"]
+    volumes:
+      - .:/.farmsetu_project
+    environment:
+      - PGDATA=/var/lib/postgresql/
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=db_farmsetu
+      - DB_HOST=db
+    depends_on:
+      - db
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=db_farmsetu
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
+
+
+networks:
+  app:
+    driver: bridge

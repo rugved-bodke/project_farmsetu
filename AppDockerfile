@@ -1,0 +1,4 @@
+FROM base:0.1
+ADD . /.project_farmsetu
+WORKDIR /.project_farmsetu
+ENTRYPOINT [ "/.project_farmsetu/start_server.sh" ]
