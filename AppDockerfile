@@ -1,4 +1,0 @@
-FROM base:0.1
-COPY . /.project_farmsetu
-WORKDIR /.project_farmsetu
-RUN python3.8 -m pip install -r /.project_farmsetu/requirements.txt

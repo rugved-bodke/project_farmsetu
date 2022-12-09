@@ -1,3 +1,7 @@
 static/
 *.pyc
 .vscode/
+__pycache__/
+__pycache__
+.pytest_cache/
+settings.*.pyc
