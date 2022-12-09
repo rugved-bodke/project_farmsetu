@@ -6,3 +6,4 @@ __pycache__
 .pytest_cache/
 settings.*.pyc
 .DS_Store
+.ipynb_checkpoints/
