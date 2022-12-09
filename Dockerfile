@@ -20,5 +20,5 @@ WORKDIR /.project_farmsetu
 RUN chmod +x /.project_farmsetu/start_server.sh
 EXPOSE 8000
 EXPOSE 5432
-RUN python3.8 -m pytest -s
+CMD [ "python3.8", "-m", "pytest", "-s" ] 
 ENTRYPOINT ["/.project_farmsetu/start_server.sh"]
